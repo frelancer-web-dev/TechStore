@@ -1,0 +1,108 @@
+{
+  "name": "techstore-landing",
+  "version": "1.0.0",
+  "description": "Сучасний адаптивний лендінг для інтернет-магазину електроніки TechStore",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server --port=8000 --open=index.html",
+    "dev": "live-server --port=8000 --open=index.html --watch=assets/",
+    "build": "npm run build:css && npm run build:js",
+    "build:css": "postcss assets/css/styles.css -o assets/css/styles.min.css --use cssnano",
+    "build:js": "terser assets/js/main.js -o assets/js/main.min.js --compress --mangle",
+    "format": "prettier --write \"**/*.{html,css,js,json,md}\"",
+    "format:check": "prettier --check \"**/*.{html,css,js,json,md}\"",
+    "lint:css": "stylelint \"assets/css/**/*.css\"",
+    "lint:js": "eslint \"assets/js/**/*.js\"",
+    "validate": "html-validate index.html",
+    "optimize:images": "imagemin assets/images/* --out-dir=assets/images/optimized",
+    "deploy": "gh-pages -d .",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": [
+    "landing-page",
+    "e-commerce",
+    "techstore",
+    "responsive",
+    "vanilla-js",
+    "html5",
+    "css3",
+    "modern-design",
+    "mobile-first",
+    "ukrainian"
+  ],
+  "author": {
+    "name": "TechStore Team",
+    "email": "info@techstore.ua",
+    "url": "https://techstore.ua"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/techstore-landing.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/techstore-landing/issues"
+  },
+  "homepage": "https://yourusername.github.io/techstore-landing/",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "prettier": "^3.1.0",
+    "eslint": "^8.54.0",
+    "stylelint": "^15.11.0",
+    "stylelint-config-standard": "^34.0.0",
+    "html-validate": "^8.7.2",
+    "postcss": "^8.4.31",
+    "postcss-cli": "^11.0.0",
+    "cssnano": "^6.0.1",
+    "terser": "^5.24.0",
+    "imagemin": "^8.0.1",
+    "imagemin-cli": "^7.0.0",
+    "gh-pages": "^6.1.0"
+  },
+  "dependencies": {},
+  "browserslist": [
+    "last 2 versions",
+    "> 1%",
+    "not dead",
+    "not ie 11"
+  ],
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "prettier": {
+    "semi": true,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "es5",
+    "printWidth": 100,
+    "bracketSpacing": true,
+    "arrowParens": "avoid"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es2021": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+      "ecmaVersion": 12,
+      "sourceType": "module"
+    },
+    "rules": {
+      "no-console": "warn",
+      "no-unused-vars": "warn",
+      "prefer-const": "error",
+      "no-var": "error"
+    }
+  },
+  "stylelint": {
+    "extends": "stylelint-config-standard",
+    "rules": {
+      "color-hex-length": "short",
+      "declaration-block-no-duplicate-properties": true,
+      "font-family-name-quotes": "always-where-recommended",
+      "selector-class-pattern": null
+    }
+  }
+}

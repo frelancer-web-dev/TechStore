@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TechStore - Демонстраційний проект інтернет-магазину електроніки">
+  <meta name="keywords" content="електроніка, смартфони, ноутбуки, гаджети, портфоліо проект">
+  <meta name="author" content="TechStore Demo">
+  <title>TechStore - Демонстраційний інтернет-магазин електроніки</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="./assets/css/styles.css">
+  <link rel="stylesheet" href="./assets/css/main.css">
+  <link rel="stylesheet" href="./assets/css/components.css">
+  <link rel="stylesheet" href="./assets/css/product.css">  <!-- Для featured products -->
+  <link rel="stylesheet" href="./assets/css/theme.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-main">
+      <div class="container">
+        <div class="header-main-content">
+          <!-- Logo -->
+          <a href="index.html" class="logo">
+            <i class="fas fa-bolt"></i>
+            <span>TechStore</span>
+          </a>
+          
+          <!-- Search -->
+          <div class="search-bar">
+            <input 
+              type="text" 
+              class="search-input" 
+              placeholder="Пошук товарів..." 
+              data-i18n-placeholder="search_placeholder"
+              id="searchInput"
+            >
+            <button class="search-btn" id="searchBtn">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+          
+          <!-- Header Actions -->
+          <div class="header-actions">
+            <!-- Language Switcher -->
+            <div class="language-switcher">
+              <button class="language-btn" id="languageBtn">
+                <i class="fas fa-globe"></i>
+                <span data-i18n="language">UA</span>
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="language-dropdown" id="languageDropdown">
+                <button data-lang="uk">Українська</button>
+                <button data-lang="en">English</button>
+                <button data-lang="ru">Русский</button>
+              </div>
+            </div>
+            
+            <!-- Theme Switcher -->
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+              <i class="fas fa-moon"></i>
+            </button>
+          </div>
+          
+          <!-- Header Nav -->
+          <nav class="header-nav">
+            <a href="./assets/html/favorites.html" class="nav-icon">
+              <i class="fas fa-heart"></i>
+              <span class="badge" id="favoritesCount">0</span>
+            </a>
+            <a href="./assets/html/cart.html" class="nav-icon">
+              <i class="fas fa-shopping-cart"></i>
+              <span class="badge" id="cartCount">0</span>
+            </a>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+              <i class="fas fa-bars"></i>
+            </button>
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Main Navigation -->
+    <nav class="main-nav">
+      <div class="container">
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html" class="active" data-i18n="nav_home">Головна</a></li>
+          <li><a href="./assets/html/catalog.html" data-i18n="nav_catalog">Каталог</a></li>
+          <li><a href="./assets/html/about.html" data-i18n="nav_about">Про нас</a></li>
+          <li><a href="./assets/html/contacts.html" data-i18n="nav_contacts">Контакти</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section with Photo Background -->
+  <section class="hero" style="background-image: url('./favicon.png'); background-size: cover; background-position: center; background-repeat: no-repeat; position: relative;">
+    <!-- Dark Overlay -->
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(255, 107, 53, 0.3) 50%, rgba(0, 0, 0, 0.7) 100%); z-index: 1;"></div>
+    
+    <div class="container" style="position: relative; z-index: 2;">
+      <div class="hero-slider">
+        <div class="hero-slide active">
+          <div class="hero-content">
+            <span class="hero-badge" data-i18n="hero_badge_new">Нова колекція 2025</span>
+            <h1 class="hero-title" data-i18n="hero_title" style="text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);">Технології майбутнього вже сьогодні</h1>
+            <p class="hero-description" data-i18n="hero_description" style="text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);">
+              Відкрийте для себе найсучасніші гаджети, які змінять ваше життя
+            </p>
+            <div class="hero-buttons">
+              <a href="./assets/html/catalog.html" class="btn btn-primary" data-i18n="hero_btn_catalog">
+                Переглянути каталог
+              </a>
+              <a href="./assets/html/about.html" class="btn btn-outline" data-i18n="hero_btn_more">
+                Дізнатись більше
+              </a>
+            </div>
+          </div>
+          <div class="hero-image">
+            <div class="hero-product-card">
+              <i class="fas fa-mobile-alt hero-icon"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories Section -->
+  <section class="categories">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title" data-i18n="categories_title">Популярні категорії</h2>
+        <a href="./assets/html/catalog.html" class="section-link" data-i18n="categories_view_all">
+          Дивитись всі <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+      
+      <div class="categories-grid">
+        <a href="./assets/html/catalog.html?category=smartphones" class="category-card">
+          <div class="category-icon">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <h3 class="category-name" data-i18n="category_smartphones">Смартфони</h3>
+          <span class="category-count">50+ <span data-i18n="products">товарів</span></span>
+        </a>
+        
+        <a href="./assets/html/catalog.html?category=laptops" class="category-card">
+          <div class="category-icon">
+            <i class="fas fa-laptop"></i>
+          </div>
+          <h3 class="category-name" data-i18n="category_laptops">Ноутбуки</h3>
+          <span class="category-count">50+ <span data-i18n="products">товарів</span></span>
+        </a>
+        
+        <a href="./assets/html/catalog.html?category=headphones" class="category-card">
+          <div class="category-icon">
+            <i class="fas fa-headphones"></i>
+          </div>
+          <h3 class="category-name" data-i18n="category_headphones">Навушники</h3>
+          <span class="category-count">50+ <span data-i18n="products">товарів</span></span>
+        </a>
+        
+        <a href="./assets/html/catalog.html?category=watches" class="category-card">
+          <div class="category-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <h3 class="category-name" data-i18n="category_watches">Розумні годинники</h3>
+          <span class="category-count">50+ <span data-i18n="products">товарів</span></span>
+        </a>
+        
+        <a href="./assets/html/catalog.html?category=accessories" class="category-card">
+          <div class="category-icon">
+            <i class="fas fa-plug"></i>
+          </div>
+          <h3 class="category-name" data-i18n="category_accessories">Аксесуари</h3>
+          <span class="category-count">50+ <span data-i18n="products">товарів</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Products Section -->
+  <section class="featured-products">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title" data-i18n="featured_title">Популярні товари</h2>
+        <a href="./assets/html/catalog.html" class="section-link" data-i18n="featured_view_all">
+          Дивитись всі <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+      
+      <div class="products-grid" id="featuredProducts">
+        <!-- Products will be loaded dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <div class="container">
+      <div class="features-grid">
+        <div class="feature-item">
+          <div class="feature-icon">
+            <i class="fas fa-shipping-fast"></i>
+          </div>
+          <div class="feature-content">
+            <h3 class="feature-title" data-i18n="feature_shipping_title">Безкоштовна доставка</h3>
+            <p class="feature-text" data-i18n="feature_shipping_text">При замовленні від 1000 грн</p>
+          </div>
+        </div>
+        
+        <div class="feature-item">
+          <div class="feature-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <div class="feature-content">
+            <h3 class="feature-title" data-i18n="feature_warranty_title">Офіційна гарантія</h3>
+            <p class="feature-text" data-i18n="feature_warranty_text">2 роки на всю продукцію</p>
+          </div>
+        </div>
+        
+        <div class="feature-item">
+          <div class="feature-icon">
+            <i class="fas fa-undo"></i>
+          </div>
+          <div class="feature-content">
+            <h3 class="feature-title" data-i18n="feature_return_title">Повернення товару</h3>
+            <p class="feature-text" data-i18n="feature_return_text">Протягом 14 днів</p>
+          </div>
+        </div>
+        
+        <div class="feature-item">
+          <div class="feature-icon">
+            <i class="fas fa-headset"></i>
+          </div>
+          <div class="feature-content">
+            <h3 class="feature-title" data-i18n="feature_support_title">Підтримка 24/7</h3>
+            <p class="feature-text" data-i18n="feature_support_text">Завжди на зв'язку</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-main">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-column">
+            <div class="footer-logo">
+              <i class="fas fa-bolt"></i>
+              <span>TechStore</span>
+            </div>
+            <p class="footer-description" data-i18n="footer_description">
+              Демонстраційний проект інтернет-магазину електроніки для портфоліо.
+            </p>
+            <div class="social-links">
+              <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+              <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+          
+          <div class="footer-column">
+            <h4 class="footer-title" data-i18n="footer_catalog_title">Каталог</h4>
+            <ul class="footer-links">
+              <li><a href="./assets/html/catalog.html?category=smartphones" data-i18n="category_smartphones">Смартфони</a></li>
+              <li><a href="./assets/html/catalog.html?category=laptops" data-i18n="category_laptops">Ноутбуки</a></li>
+              <li><a href="./assets/html/catalog.html?category=headphones" data-i18n="category_headphones">Навушники</a></li>
+              <li><a href="./assets/html/catalog.html?category=watches" data-i18n="category_watches">Розумні годинники</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-column">
+            <h4 class="footer-title" data-i18n="footer_info_title">Інформація</h4>
+            <ul class="footer-links">
+              <li><a href="./assets/html/about.html" data-i18n="nav_about">Про проект</a></li>
+              <li><a href="#" data-i18n="footer_delivery">Доставка і оплата</a></li>
+              <li><a href="#" data-i18n="footer_warranty">Гарантія</a></li>
+              <li><a href="./assets/html/contacts.html" data-i18n="nav_contacts">Контакти</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-column">
+            <h4 class="footer-title" data-i18n="footer_contacts_title">Контакти</h4>
+            <ul class="footer-contacts">
+              <li>
+                <i class="fas fa-phone"></i>
+                <span>0 800 123 456</span>
+              </li>
+              <li>
+                <i class="fas fa-envelope"></i>
+                <span>info@techstore.ua</span>
+              </li>
+              <li>
+                <i class="fas fa-map-marker-alt"></i>
+                <span data-i18n="footer_address">м. Київ, вул. Хрещатик, 1</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="footer-bottom-content">
+          <div class="footer-bottom-left">
+            <p>&copy; 2025 TechStore. <span data-i18n="footer_rights">Всі права захищені</span>.</p>
+            <div class="footer-legal">
+              <a href="#" data-i18n="footer_privacy">Політика конфіденційності</a>
+              <a href="#" data-i18n="footer_terms">Умови використання</a>
+            </div>
+          </div>
+          <div class="footer-disclaimer">
+            <i class="fas fa-info-circle"></i>
+            <span data-i18n="footer_disclaimer">
+              Це демонстраційний проект для портфоліо. Не є реальним інтернет-магазином.
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <div class="signature">Demo version</div>
+
+  <!-- Scripts -->
+  <script src="./assets/js/utils.js"></script>
+  <script src="./assets/js/i18n.js"></script>
+  <script src="./assets/js/theme.js"></script>
+  <script src="./assets/js/main.js"></script>
+</body>
+</html>
