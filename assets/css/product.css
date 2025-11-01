@@ -1,0 +1,1101 @@
+/* ============================================
+   TechStore - Product & Product Card Styles
+   ВИПРАВЛЕНО: SKU, наявність, логіка кнопок
+   ============================================ */
+
+/* ============================================
+   PRODUCT CARD (використовується скрізь)
+   ============================================ */
+.product-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md);
+  transition: var(--transition-base);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.product-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-5px);
+  border-color: var(--primary-color);
+}
+
+/* ============================================
+   PRODUCT BADGES
+   ============================================ */
+.product-badges {
+  position: absolute;
+  top: var(--spacing-md);
+  left: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 5;
+  max-width: 20%;
+}
+
+.badge,
+.product-badge {
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: fit-content;
+  max-width: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.badge-new,
+.product-badge.new {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.badge-sale,
+.product-badge.sale {
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+  color: white;
+}
+
+.badge-hot,
+.product-badge.hot {
+  background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+  color: white;
+}
+
+/* КРИТИЧНО: В каталозі компактні бейджі */
+.products-grid .product-card .product-badges {
+  max-width: 25%;
+}
+
+.products-grid .product-card .product-badge {
+  padding: 0.3rem 0.5rem;
+  font-size: 0.65rem;
+}
+
+/* КРИТИЧНО: Показуємо ТІЛЬКИ перший бейдж у каталозі */
+.products-grid .product-card .product-badge ~ .product-badge {
+  display: none !important;
+}
+
+/* ============================================
+   PRODUCT IMAGE
+   ============================================ */
+.product-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  margin-bottom: var(--spacing-md);
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: var(--bg-secondary);
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: var(--transition-base);
+}
+
+.product-card:hover .product-image img {
+  transform: scale(1.05);
+}
+
+/* ============================================
+   PRODUCT ACTIONS (Quick view, Favorite)
+   ============================================ */
+.product-actions {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: var(--transition-base);
+}
+
+.product-card:hover .product-actions {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.product-action-btn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  border: none;
+}
+
+.product-action-btn:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: scale(1.1);
+}
+
+.product-action-btn.active {
+  background: var(--danger-color);
+  color: white;
+}
+
+/* ============================================
+   PRODUCT INFO
+   ============================================ */
+.product-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-category {
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.product-title {
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.4;
+}
+
+/* ============================================
+   PRODUCT RATING
+   ============================================ */
+.product-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.product-stars {
+  display: flex;
+  gap: 2px;
+  color: var(--warning-color);
+  font-size: var(--font-size-sm);
+}
+
+.product-rating-value {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+}
+
+.product-reviews {
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+}
+
+/* ============================================
+   PRODUCT PRICE
+   ============================================ */
+.product-price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-top: auto;
+  margin-bottom: var(--spacing-sm);
+}
+
+.price-current {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.price-old {
+  font-size: var(--font-size-base);
+  color: var(--text-secondary);
+  text-decoration: line-through;
+}
+
+/* ============================================
+   PRODUCT FOOTER (Buttons)
+   ============================================ */
+.product-footer {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-add-cart {
+  flex: 1;
+}
+
+.btn-quick-view {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+}
+
+/* ============================================
+   FEATURED & RELATED PRODUCTS
+   ============================================ */
+.featured-products .products-grid,
+.related-products .products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+}
+
+.featured-products .product-card,
+.related-products .product-card {
+  padding: var(--spacing-sm);
+}
+
+.featured-products .product-image,
+.related-products .product-image {
+  aspect-ratio: 1;
+  margin-bottom: var(--spacing-sm);
+}
+
+.featured-products .product-title,
+.related-products .product-title {
+  font-size: 0.875rem;
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+  min-height: 2.6rem;
+}
+
+.featured-products .product-category,
+.related-products .product-category {
+  font-size: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.featured-products .product-rating,
+.related-products .product-rating {
+  margin-bottom: 0.5rem;
+}
+
+.featured-products .product-stars,
+.related-products .product-stars {
+  font-size: 0.75rem;
+}
+
+.featured-products .product-rating-value,
+.related-products .product-rating-value {
+  font-size: 0.75rem;
+}
+
+.featured-products .product-reviews,
+.related-products .product-reviews {
+  font-size: 0.7rem;
+}
+
+.featured-products .price-current,
+.related-products .price-current {
+  font-size: 1.25rem;
+}
+
+.featured-products .price-old,
+.related-products .price-old {
+  font-size: 0.875rem;
+}
+
+.featured-products .product-footer,
+.related-products .product-footer {
+  margin-top: 0.5rem;
+}
+
+.featured-products .btn-add-cart,
+.related-products .btn-add-cart {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+}
+
+.featured-products .product-action-btn,
+.related-products .product-action-btn {
+  width: 32px;
+  height: 32px;
+  font-size: 0.875rem;
+}
+
+/* ============================================
+   RELATED PRODUCTS
+   ============================================ */
+.related-products {
+  margin-top: var(--spacing-2xl);
+  padding-top: var(--spacing-2xl);
+  border-top: 2px solid var(--border-color);
+}
+
+.related-products .section-title {
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--spacing-xl);
+  text-align: center;
+}
+
+/* ============================================
+   PRODUCT PAGE - ВИПРАВЛЕНО
+   ============================================ */
+.product-section {
+  padding: var(--spacing-xl) 0;
+}
+
+/* Product Layout */
+.product-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-2xl);
+  margin-bottom: var(--spacing-2xl);
+}
+
+/* ============================================
+   PRODUCT GALLERY
+   ============================================ */
+.product-gallery {
+  position: sticky;
+  top: calc(var(--header-height) + var(--spacing-md));
+  height: fit-content;
+}
+
+.main-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-xl);
+  margin-bottom: var(--spacing-md);
+  overflow: visible;
+  border: 1px solid var(--border-color);
+}
+
+.main-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: var(--spacing-md);
+}
+
+.favorite-btn {
+  position: absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  transition: var(--transition-base);
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  z-index: 10;
+  border: none;
+}
+
+.favorite-btn:hover {
+  transform: scale(1.1);
+  color: var(--danger-color);
+}
+
+.favorite-btn.active {
+  color: var(--danger-color);
+}
+
+.favorite-btn.active i {
+  font-weight: 900;
+}
+
+/* Thumbnail Images */
+.thumbnail-images {
+  display: flex;
+  gap: var(--spacing-sm);
+  overflow-x: auto;
+  padding: var(--spacing-xs) 0;
+}
+
+.thumbnail-images::-webkit-scrollbar {
+  height: 6px;
+}
+
+.thumbnail-images::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: var(--radius-full);
+}
+
+.thumbnail-item {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  overflow: hidden;
+  transition: var(--transition-base);
+  background: var(--bg-secondary);
+}
+
+.thumbnail-item:hover {
+  border-color: var(--primary-color);
+}
+
+.thumbnail-item.active {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(255, 107, 53, 0.2);
+}
+
+.thumbnail-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: var(--spacing-xs);
+}
+
+/* ============================================
+   PRODUCT PAGE INFO - ВИПРАВЛЕНО
+   ============================================ */
+.product-header {
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: var(--spacing-lg);
+}
+
+/* ВИПРАВЛЕНО: Title + SKU в одному рядку */
+.product-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.product-title-row h1 {
+  flex: 1;
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.product-code {
+  flex-shrink: 0;
+  padding: 0.5rem 1rem;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.product-code strong {
+  color: var(--text-primary);
+}
+
+.product-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  flex-wrap: wrap;
+}
+
+.rating-value {
+  font-weight: 700;
+  font-size: var(--font-size-lg);
+}
+
+.reviews-count {
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+/* ВИПРАВЛЕНО: Price Block з наявністю */
+.product-price-block {
+  padding: var(--spacing-lg);
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--spacing-lg);
+  position: relative;
+}
+
+/* Наявність справа вгорі */
+.product-availability {
+  position: absolute;
+  top: var(--spacing-lg);
+  right: var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(46, 204, 113, 0.1);
+  color: var(--success-color);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+}
+
+.product-availability.out-of-stock {
+  background: rgba(231, 76, 60, 0.1);
+  color: var(--danger-color);
+}
+
+.product-availability i {
+  font-size: 1rem;
+}
+
+.price-main {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+}
+
+.product-price-block .price-current {
+  font-size: var(--font-size-4xl);
+  font-weight: 800;
+  color: var(--primary-color);
+}
+
+.product-price-block .price-old {
+  font-size: var(--font-size-xl);
+  color: var(--text-secondary);
+  text-decoration: line-through;
+}
+
+.price-discount {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+}
+
+.discount-badge {
+  padding: 0.25rem 0.75rem;
+  background: var(--danger-color);
+  color: white;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+}
+
+.discount-amount {
+  color: var(--success-color);
+  font-weight: 700;
+}
+
+/* Short Description */
+.product-description-short {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: var(--spacing-lg);
+}
+
+/* ВИПРАВЛЕНО: Quantity + Add to Cart */
+.product-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.qty-btn {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-secondary);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition-base);
+  color: var(--text-primary);
+  font-size: 1.2rem;
+}
+
+.qty-btn:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+.qty-input {
+  width: 80px;
+  height: 48px;
+  border: none;
+  text-align: center;
+  font-weight: 700;
+  font-size: var(--font-size-xl);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.qty-input:focus {
+  outline: none;
+}
+
+.btn-add-cart,
+.btn-buy-now {
+  flex: 1;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: var(--font-size-base);
+}
+
+/* Product Features */
+.product-features {
+  margin-bottom: var(--spacing-lg);
+}
+
+.product-features h3 {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--spacing-sm);
+}
+
+.product-features ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.product-features li {
+  display: flex;
+  align-items: start;
+  gap: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.product-features li::before {
+  content: '✓';
+  color: var(--success-color);
+  font-weight: 700;
+  font-size: var(--font-size-lg);
+}
+
+/* Product Services */
+.product-services {
+  padding: var(--spacing-md);
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.service-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.service-item i {
+  color: var(--primary-color);
+  font-size: var(--font-size-lg);
+}
+
+/* ============================================
+   PRODUCT TABS
+   ============================================ */
+.product-tabs {
+  margin-top: var(--spacing-2xl);
+  padding-top: var(--spacing-2xl);
+  border-top: 2px solid var(--border-color);
+}
+
+/* Description */
+.product-description {
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+.product-description h3 {
+  color: var(--text-primary);
+  margin-top: var(--spacing-lg);
+  margin-bottom: var(--spacing-sm);
+}
+
+.product-description p {
+  margin-bottom: var(--spacing-md);
+}
+
+/* Specifications */
+.specifications-grid {
+  display: grid;
+  gap: 1px;
+  background: var(--border-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.spec-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  background: var(--bg-primary);
+}
+
+.spec-label {
+  padding: var(--spacing-md);
+  font-weight: 600;
+  background: var(--bg-secondary);
+  border-right: 1px solid var(--border-color);
+}
+
+.spec-value {
+  padding: var(--spacing-md);
+  color: var(--text-secondary);
+}
+
+/* Reviews */
+.reviews-summary {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--spacing-2xl);
+  padding: var(--spacing-xl);
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+.reviews-rating {
+  text-align: center;
+}
+
+.rating-big {
+  font-size: 4rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  line-height: 1;
+  margin-bottom: var(--spacing-sm);
+}
+
+.rating-stars {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  font-size: var(--font-size-xl);
+  color: var(--warning-color);
+  margin-bottom: var(--spacing-sm);
+}
+
+.rating-count {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.rating-bars {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.rating-bar {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+}
+
+.bar {
+  height: 8px;
+  background: var(--border-color);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  background: var(--warning-color);
+  transition: width 0.5s ease;
+}
+
+.bar-count {
+  color: var(--text-secondary);
+  min-width: 40px;
+  text-align: right;
+}
+
+/* Reviews List */
+.reviews-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.review-item {
+  padding: var(--spacing-lg);
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: var(--spacing-sm);
+}
+
+.review-author {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.review-date {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.review-stars {
+  display: flex;
+  gap: 2px;
+  color: var(--warning-color);
+}
+
+.review-text {
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+/* ============================================
+   RESPONSIVE - Product Page
+   ============================================ */
+@media (max-width: 1024px) {
+  .product-layout {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+  }
+
+  .product-gallery {
+    position: static;
+  }
+
+  .reviews-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .related-products .products-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .featured-products .products-grid,
+  .related-products .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-sm);
+  }
+
+  .product-title-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .product-code {
+    align-self: flex-start;
+  }
+
+  .product-availability {
+    position: static;
+    margin-bottom: var(--spacing-md);
+    align-self: flex-start;
+  }
+
+  .product-price-block .price-current {
+    font-size: var(--font-size-3xl);
+  }
+
+  .product-actions {
+    flex-direction: column;
+  }
+
+  .quantity-selector {
+    width: 100%;
+  }
+
+  .btn-add-cart,
+  .btn-buy-now {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .featured-products .products-grid,
+  .related-products .products-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-price-block .price-current {
+    font-size: var(--font-size-2xl);
+  }
+}
+
+/* ============================================
+   DARK THEME
+   ============================================ */
+[data-theme="dark"] .product-card,
+[data-theme="dark"] .main-image,
+[data-theme="dark"] .thumbnail-item,
+[data-theme="dark"] .product-price-block,
+[data-theme="dark"] .product-services,
+[data-theme="dark"] .specifications-grid,
+[data-theme="dark"] .reviews-summary,
+[data-theme="dark"] .review-item {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .product-image,
+[data-theme="dark"] .thumbnail-item {
+  background: var(--bg-primary);
+}
+
+[data-theme="dark"] .spec-row {
+  background: var(--bg-primary);
+}
+
+[data-theme="dark"] .spec-label {
+  background: var(--bg-secondary);
+}
+
+[data-theme="dark"] .product-action-btn {
+  background: var(--bg-secondary);
+}
+
+[data-theme="dark"] .qty-btn {
+  background: var(--bg-secondary);
+}
+
+[data-theme="dark"] .qty-input {
+  background: var(--bg-primary);
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+.favorite-btn:focus,
+.qty-btn:focus,
+.btn-add-cart:focus,
+.btn-buy-now:focus,
+.product-action-btn:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+@media (prefers-contrast: high) {
+  .main-image,
+  .thumbnail-item,
+  .product-price-block,
+  .product-card {
+    border-width: 3px;
+  }
+}/* ============================================
+   TechStore - Product & Product Card Styles
+   ВИПРАВЛЕНО: Кнопка під ціною
+   ============================================ */
+
+/* Всі стилі залишаються без змін, додаємо тільки стилі для нової кнопки */
+
+/* ... (весь попередній CSS залишається) ... */
+
+/* ============================================
+   НОВА КНОПКА ПІД ЦІНОЮ
+   ============================================ */
+.btn-add-cart-main {
+  width: 100%;
+  margin-top: var(--spacing-lg);
+  padding: 1rem 2rem;
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  border-radius: var(--radius-lg);
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition-base);
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+}
+
+.btn-add-cart-main:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+}
+
+.btn-add-cart-main:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+}
+
+.btn-add-cart-main i {
+  font-size: 1.25rem;
+}
+
+/* Відключаємо кнопку якщо товару немає в наявності */
+.btn-add-cart-main:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none;
+}
+
+/* Responsive - робимо кнопку меншою на мобільних */
+@media (max-width: 768px) {
+  .btn-add-cart-main {
+    padding: 0.875rem 1.5rem;
+    font-size: var(--font-size-base);
+  }
+  
+  .btn-add-cart-main i {
+    font-size: 1.125rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .favorite-btn,
+  .qty-btn,
+  .thumbnail-item,
+  .product-card,
+  .product-action-btn {
+    transition: none;
+  }
+  
+  .product-image img {
+    transition: none;
+  }
+}
