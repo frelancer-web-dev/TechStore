@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Детальна інформація про товар - TechStore">
+  <title>Товар - TechStore</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/product.css">
+  <link rel="stylesheet" href="../css/theme.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../../favicon.png">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-main">
+      <div class="container">
+        <div class="header-main-content">
+          <a href="../../index.html" class="logo">
+            <i class="fas fa-bolt"></i>
+            <span>TechStore</span>
+          </a>
+          
+          <div class="search-bar">
+            <input type="text" class="search-input" placeholder="Пошук товарів..." 
+                   data-i18n-placeholder="search_placeholder" id="searchInput">
+            <button class="search-btn" id="searchBtn">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+          
+          <div class="header-actions">
+            <div class="language-switcher">
+              <button class="language-btn" id="languageBtn">
+                <i class="fas fa-globe"></i>
+                <span data-i18n="language">UA</span>
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="language-dropdown" id="languageDropdown">
+                <button data-lang="uk">Українська</button>
+                <button data-lang="en">English</button>
+                <button data-lang="ru">Русский</button>
+              </div>
+            </div>
+            
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+              <i class="fas fa-moon"></i>
+            </button>
+          </div>
+          
+          <nav class="header-nav">
+            <a href="favorites.html" class="nav-icon">
+              <i class="fas fa-heart"></i>
+              <span class="badge" id="favoritesCount">0</span>
+            </a>
+            <a href="cart.html" class="nav-icon">
+              <i class="fas fa-shopping-cart"></i>
+              <span class="badge" id="cartCount">0</span>
+            </a>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+              <i class="fas fa-bars"></i>
+            </button>
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+    <nav class="main-nav">
+      <div class="container">
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="../../index.html" data-i18n="nav_home">Головна</a></li>
+          <li><a href="catalog.html" data-i18n="nav_catalog">Каталог</a></li>
+          <li><a href="about.html" data-i18n="nav_about">Про нас</a></li>
+          <li><a href="contacts.html" data-i18n="nav_contacts">Контакти</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Breadcrumbs -->
+  <div class="breadcrumbs">
+    <div class="container">
+      <ul class="breadcrumbs-list">
+        <li><a href="../../index.html" data-i18n="nav_home">Головна</a></li>
+        <li><i class="fas fa-chevron-right"></i></li>
+        <li><a href="catalog.html" data-i18n="nav_catalog">Каталог</a></li>
+        <li><i class="fas fa-chevron-right"></i></li>
+        <li id="breadcrumbCategory">...</li>
+        <li><i class="fas fa-chevron-right"></i></li>
+        <li id="breadcrumbProduct">...</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Product Section -->
+  <section class="product-section">
+    <div class="container">
+      <div class="product-layout">
+        <!-- Product Gallery - ВИПРАВЛЕНО -->
+        <div class="product-gallery">
+          <div class="main-image" id="mainImage">
+            <img src="../images/placeholder.jpg" alt="Product">
+            <button class="favorite-btn" id="favoriteBtn" aria-label="Add to favorites">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <div class="thumbnail-images" id="thumbnailImages"></div>
+        </div>
+
+        <!-- Product Info -->
+        <div class="product-info">
+          <div class="product-header">
+            <div class="product-badges" id="productBadges"></div>
+            
+            <div class="product-title-row">
+              <h1 id="productTitle">Завантаження...</h1>
+              <div class="product-code" id="productCode">
+                <strong>SKU:</strong> TS-001
+              </div>
+            </div>
+            
+            <div class="product-meta">
+              <div class="product-rating">
+                <div class="stars" id="productStars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </div>
+                <span class="rating-value" id="ratingValue">4.8</span>
+                <span class="reviews-count">(<span id="reviewsCount">245</span> <span data-i18n="reviews">відгуків</span>)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Price Block -->
+          <div class="product-price-block">
+            <div class="product-availability" id="productAvailability">
+              <i class="fas fa-check-circle"></i>
+              <span data-i18n="in_stock">В наявності</span>
+            </div>
+            
+            <div class="price-main">
+              <span class="price-current" id="priceCurrent">21 999 ₴</span>
+              <span class="price-old" id="priceOld">25 999 ₴</span>
+            </div>
+            <div class="price-discount" id="priceDiscount">
+              <span class="discount-badge">-15%</span>
+              <span class="discount-text" data-i18n="you_save">Ви економите:</span>
+              <span class="discount-amount" id="discountAmount">4 000 ₴</span>
+            </div>
+          </div>
+          
+          <!-- Main Add to Cart Button -->
+          <button class="btn btn-primary btn-add-cart-main" id="addToCartMainBtn">
+            <i class="fas fa-shopping-cart"></i>
+            <span data-i18n="add_to_cart">Додати в кошик</span>
+          </button>
+
+          <div class="product-description-short" id="productDescriptionShort"></div>
+
+          <!-- Quantity + Actions -->
+          <div class="product-actions">
+            <div class="quantity-selector">
+              <button class="qty-btn" id="qtyMinus" aria-label="Decrease quantity">
+                <i class="fas fa-minus"></i>
+              </button>
+              <input type="number" class="qty-input" id="qtyInput" value="1" min="1" max="99">
+              <button class="qty-btn" id="qtyPlus" aria-label="Increase quantity">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+
+            <button class="btn btn-outline btn-buy-now" id="buyNowBtn">
+              <span data-i18n="buy_now">Купити зараз</span>
+            </button>
+          </div>
+
+          <div class="product-features">
+            <h3 data-i18n="key_features">Ключові особливості:</h3>
+            <ul id="productFeaturesList"></ul>
+          </div>
+
+          <div class="product-services">
+            <div class="service-item">
+              <i class="fas fa-truck"></i>
+              <span data-i18n="free_delivery">Безкоштовна доставка від 1000 ₴</span>
+            </div>
+            <div class="service-item">
+              <i class="fas fa-shield-alt"></i>
+              <span data-i18n="warranty_2y">Офіційна гарантія 2 роки</span>
+            </div>
+            <div class="service-item">
+              <i class="fas fa-undo"></i>
+              <span data-i18n="return_14d">Повернення протягом 14 днів</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Tabs -->
+      <div class="product-tabs">
+        <div class="tabs-nav">
+          <button class="tab-btn active" data-tab="description">
+            <span data-i18n="tab_description">Опис</span>
+          </button>
+          <button class="tab-btn" data-tab="specifications">
+            <span data-i18n="tab_specifications">Характеристики</span>
+          </button>
+          <button class="tab-btn" data-tab="reviews">
+            <span data-i18n="tab_reviews">Відгуки</span> (<span id="reviewsTabCount">245</span>)
+          </button>
+        </div>
+
+        <div class="tabs-content">
+          <div class="tab-panel active" id="description">
+            <div class="product-description" id="productDescription"></div>
+          </div>
+
+          <div class="tab-panel" id="specifications">
+            <div class="specifications-grid" id="specificationsGrid"></div>
+          </div>
+
+          <div class="tab-panel" id="reviews">
+            <div class="reviews-summary">
+              <div class="reviews-rating">
+                <div class="rating-big" id="ratingBig">4.8</div>
+                <div class="rating-stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="rating-count">
+                  <span data-i18n="based_on">На основі</span> <span id="totalReviews">245</span> <span data-i18n="reviews">відгуків</span>
+                </div>
+              </div>
+
+              <div class="rating-bars">
+                <div class="rating-bar">
+                  <span>5 <i class="fas fa-star"></i></span>
+                  <div class="bar"><div class="bar-fill" style="width: 70%"></div></div>
+                  <span class="bar-count">170</span>
+                </div>
+                <div class="rating-bar">
+                  <span>4 <i class="fas fa-star"></i></span>
+                  <div class="bar"><div class="bar-fill" style="width: 20%"></div></div>
+                  <span class="bar-count">50</span>
+                </div>
+                <div class="rating-bar">
+                  <span>3 <i class="fas fa-star"></i></span>
+                  <div class="bar"><div class="bar-fill" style="width: 7%"></div></div>
+                  <span class="bar-count">17</span>
+                </div>
+                <div class="rating-bar">
+                  <span>2 <i class="fas fa-star"></i></span>
+                  <div class="bar"><div class="bar-fill" style="width: 2%"></div></div>
+                  <span class="bar-count">5</span>
+                </div>
+                <div class="rating-bar">
+                  <span>1 <i class="fas fa-star"></i></span>
+                  <div class="bar"><div class="bar-fill" style="width: 1%"></div></div>
+                  <span class="bar-count">3</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="reviews-list" id="reviewsList"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Related Products -->
+      <div class="related-products">
+        <h2 class="section-title" data-i18n="related_products">Схожі товари</h2>
+        <div class="products-grid" id="relatedProducts"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-main">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-column">
+            <div class="footer-logo">
+              <i class="fas fa-bolt"></i>
+              <span>TechStore</span>
+            </div>
+            <p class="footer-description" data-i18n="footer_description">
+              Ваш надійний партнер у світі технологій. Якість, швидкість, доступність.
+            </p>
+            <div class="social-links">
+              <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+              <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+          
+          <div class="footer-column">
+            <h4 class="footer-title" data-i18n="footer_catalog_title">Каталог</h4>
+            <ul class="footer-links">
+              <li><a href="catalog.html?category=smartphones" data-i18n="category_smartphones">Смартфони</a></li>
+              <li><a href="catalog.html?category=laptops" data-i18n="category_laptops">Ноутбуки</a></li>
+              <li><a href="catalog.html?category=headphones" data-i18n="category_headphones">Навушники</a></li>
+              <li><a href="catalog.html?category=watches" data-i18n="category_watches">Розумні годинники</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-column">
+            <h4 class="footer-title" data-i18n="footer_info_title">Інформація</h4>
+            <ul class="footer-links">
+              <li><a href="about.html" data-i18n="nav_about">Про нас</a></li>
+              <li><a href="#" data-i18n="footer_delivery">Доставка і оплата</a></li>
+              <li><a href="#" data-i18n="footer_warranty">Гарантія</a></li>
+              <li><a href="contacts.html" data-i18n="nav_contacts">Контакти</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-column">
+            <h4 class="footer-title" data-i18n="footer_contacts_title">Контакти</h4>
+            <ul class="footer-contacts">
+              <li><i class="fas fa-phone"></i><span>0 800 123 456</span></li>
+              <li><i class="fas fa-envelope"></i><span>info@techstore.ua</span></li>
+              <li><i class="fas fa-map-marker-alt"></i><span data-i18n="footer_address">м. Київ, вул. Хрещатик, 1</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="footer-bottom-content">
+          <p>&copy; 2025 TechStore. <span data-i18n="footer_rights">Всі права захищені</span>.</p>
+          <div class="footer-legal">
+            <a href="#" data-i18n="footer_privacy">Політика конфіденційності</a>
+            <a href="#" data-i18n="footer_terms">Умови використання</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div class="toast" id="toast">
+    <div class="toast-icon">
+      <i class="fas fa-check-circle"></i>
+    </div>
+    <div class="toast-content">
+      <div class="toast-title" id="toastTitle"></div>
+      <div class="toast-message" id="toastMessage"></div>
+    </div>
+  </div>
+
+  <script src="../js/utils.js"></script>     <!-- 1. Спочатку Utils -->
+  <script src="../js/i18n.js"></script>      <!-- 2. Інтернаціоналізація -->
+  <script src="../js/theme.js"></script>     <!-- 3. Тема -->
+  <script src="../js/main.js"></script>      <!-- 4. Main (використовує Utils) -->
+  <script src="../js/product.js"></script>
+</body>
+</html>

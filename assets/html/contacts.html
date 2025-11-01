@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Контакти TechStore - зв'яжіться з нами">
+  <title>Контакти - TechStore</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/about-contacts.css">
+  <link rel="stylesheet" href="../css/theme.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../../favicon.png">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-main">
+      <div class="container">
+        <div class="header-main-content">
+          <!-- Logo -->
+          <a href="../../index.html" class="logo">
+            <i class="fas fa-bolt"></i>
+            <span>TechStore</span>
+          </a>
+          
+          <!-- Search -->
+          <div class="search-bar">
+            <input 
+              type="text" 
+              class="search-input" 
+              placeholder="Пошук товарів..." 
+              data-i18n-placeholder="search_placeholder"
+              id="searchInput"
+            >
+            <button class="search-btn" id="searchBtn">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+          
+          <!-- Header Actions -->
+          <div class="header-actions">
+            <!-- Language Switcher -->
+            <div class="language-switcher">
+              <button class="language-btn" id="languageBtn">
+                <i class="fas fa-globe"></i>
+                <span data-i18n="language">UA</span>
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="language-dropdown" id="languageDropdown">
+                <button data-lang="uk">Українська</button>
+                <button data-lang="en">English</button>
+                <button data-lang="ru">Русский</button>
+              </div>
+            </div>
+            
+            <!-- Theme Switcher -->
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+              <i class="fas fa-moon"></i>
+            </button>
+          </div>
+          
+          <!-- Header Nav -->
+          <nav class="header-nav">
+            <a href="favorites.html" class="nav-icon">
+              <i class="fas fa-heart"></i>
+              <span class="badge" id="favoritesCount">0</span>
+            </a>
+            <a href="cart.html" class="nav-icon">
+              <i class="fas fa-shopping-cart"></i>
+              <span class="badge" id="cartCount">0</span>
+            </a>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+              <i class="fas fa-bars"></i>
+            </button>
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Main Navigation -->
+    <nav class="main-nav">
+      <div class="container">
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="../../index.html" data-i18n="nav_home">Головна</a></li>
+          <li><a href="catalog.html" data-i18n="nav_catalog">Каталог</a></li>
+          <li><a href="about.html" data-i18n="nav_about">Про нас</a></li>
+          <li><a href="contacts.html" class="active" data-i18n="nav_contacts">Контакти</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Breadcrumbs -->
+  <div class="breadcrumbs">
+    <div class="container">
+      <ul class="breadcrumbs-list">
+        <li><a href="../../index.html" data-i18n="nav_home">Головна</a></li>
+        <li><i class="fas fa-chevron-right"></i></li>
+        <li data-i18n="nav_contacts">Контакти</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Contacts Section -->
+  <section class="contacts-section">
+    <div class="container">
+      <div class="page-header">
+        <h1 class="page-title" data-i18n="contacts_title">Контакти</h1>
+        <p class="page-subtitle" data-i18n="contacts_subtitle">
+          Ми завжди раді відповісти на ваші запитання
+        </p>
+      </div>
+
+      <div class="contacts-layout">
+        <!-- Contact Info -->
+        <div class="contact-info-cards">
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <h3 class="contact-title" data-i18n="contact_phone_title">Телефон</h3>
+            <p class="contact-text">
+              <a href="tel:+380800123456">0 800 123 456</a><br>
+              <a href="tel:+380441234567">+38 (044) 123-45-67</a>
+            </p>
+            <p class="contact-note" data-i18n="contact_phone_note">
+              Безкоштовно по Україні
+            </p>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <h3 class="contact-title" data-i18n="contact_email_title">Email</h3>
+            <p class="contact-text">
+              <a href="mailto:info@techstore.ua">info@techstore.ua</a><br>
+              <a href="mailto:support@techstore.ua">support@techstore.ua</a>
+            </p>
+            <p class="contact-note" data-i18n="contact_email_note">
+              Відповімо протягом 24 годин
+            </p>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <h3 class="contact-title" data-i18n="contact_address_title">Адреса</h3>
+            <p class="contact-text" data-i18n="contact_address">
+              м. Київ, вул. Хрещатик, 1<br>
+              офіс 101, 10 поверх
+            </p>
+            <p class="contact-note" data-i18n="contact_address_note">
+              Пн-Пт: 9:00-18:00
+            </p>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <h3 class="contact-title" data-i18n="contact_hours_title">Графік роботи</h3>
+            <p class="contact-text">
+              <span data-i18n="contact_weekdays">Пн-Пт:</span> 9:00 - 21:00<br>
+              <span data-i18n="contact_weekend">Сб-Нд:</span> 10:00 - 20:00
+            </p>
+            <p class="contact-note" data-i18n="contact_support">
+              Підтримка онлайн 24/7
+            </p>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form-wrapper">
+          <h2 class="form-title" data-i18n="contact_form_title">Напишіть нам</h2>
+          <form class="contact-form" id="contactForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name" class="form-label">
+                  <span data-i18n="form_name">Ваше ім'я</span>
+                  <span class="required">*</span>
+                </label>
+                <input 
+                  type="text" 
+                  class="form-input" 
+                  id="name" 
+                  name="name"
+                  required
+                  data-i18n-placeholder="form_name_placeholder"
+                  placeholder="Введіть ваше ім'я"
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="email" class="form-label">
+                  <span data-i18n="form_email">Email</span>
+                  <span class="required">*</span>
+                </label>
+                <input 
+                  type="email" 
+                  class="form-input" 
+                  id="email" 
+                  name="email"
+                  required
+                  data-i18n-placeholder="form_email_placeholder"
+                  placeholder="example@mail.com"
+                >
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="phone" class="form-label" data-i18n="form_phone">
+                Телефон
+              </label>
+              <input 
+                type="tel" 
+                class="form-input" 
+                id="phone" 
+                name="phone"
+                placeholder="+380 (XX) XXX-XX-XX"
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="subject" class="form-label">
+                <span data-i18n="form_subject">Тема повідомлення</span>
+                <span class="required">*</span>
+              </label>
+              <select class="form-select" id="subject" name="subject" required>
+                <option value="" data-i18n="form_subject_select">Оберіть тему</option>
+                <option value="order" data-i18n="form_subject_order">Питання по замовленню</option>
+                <option value="product" data-i18n="form_subject_product">Питання по товару</option>
+                <option value="delivery" data-i18n="form_subject_delivery">Доставка</option>
+                <option value="payment" data-i18n="form_subject_payment">Оплата</option>
+                <option value="warranty" data-i18n="form_subject_warranty">Гарантія</option>
+                <option value="other" data-i18n="form_subject_other">Інше</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message" class="form-label">
+                <span data-i18n="form_message">Повідомлення</span>
+                <span class="required">*</span>
+              </label>
+              <textarea 
+                class="form-textarea" 
+                id="message" 
+                name="message"
+                rows="6"
+                required
+                data-i18n-placeholder="form_message_placeholder"
+                placeholder="Введіть ваше повідомлення..."
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-submit">
+              <span data-i18n="form_send">Надіслати повідомлення</span>
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Map Section -->
+      <div class="map-section">
+        <h2 class="section-title" data-i18n="map_title">Ми на карті</h2>
+        <div class="map-container">
+          <div class="map-placeholder">
+            <i class="fas fa-map-marked-alt"></i>
+            <p data-i18n="map_placeholder">Тут буде інтерактивна карта</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Social Media -->
+      <div class="social-section">
+        <h2 class="section-title" data-i18n="social_title">Ми в соціальних мережах</h2>
+        <div class="social-grid">
+          <a href="#" class="social-card facebook">
+            <i class="fab fa-facebook"></i>
+            <span>Facebook</span>
+          </a>
+          <a href="#" class="social-card instagram">
+            <i class="fab fa-instagram"></i>
+            <span>Instagram</span>
+          </a>
+          <a href="#" class="social-card telegram">
+            <i class="fab fa-telegram"></i>
+            <span>Telegram</span>
+          </a>
+          <a href="#" class="social-card youtube">
+            <i class="fab fa-youtube"></i>
+            <span>YouTube</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-main">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-column">
+            <div class="footer-logo">
+              <i class="fas fa-bolt"></i>
+              <span>TechStore</span>
+            </div>
+            <p class="footer-description" data-i18n="footer_description">
+              Ваш надійний партнер у світі технологій. Якість, швидкість, доступність.
+            </p>
+            <div class="social-links">
+              <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+              <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+          
+          <div class="footer-column">
+            <h4 class="footer-title" data-i18n="footer_catalog_title">Каталог</h4>
+            <ul class="footer-links">
+              <li><a href="catalog.html?category=smartphones" data-i18n="category_smartphones">Смартфони</a></li>
+              <li><a href="catalog.html?category=laptops" data-i18n="category_laptops">Ноутбуки</a></li>
+              <li><a href="catalog.html?category=headphones" data-i18n="category_headphones">Навушники</a></li>
+              <li><a href="catalog.html?category=watches" data-i18n="category_watches">Розумні годинники</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-column">
+            <h4 class="footer-title" data-i18n="footer_info_title">Інформація</h4>
+            <ul class="footer-links">
+              <li><a href="about.html" data-i18n="nav_about">Про нас</a></li>
+              <li><a href="#" data-i18n="footer_delivery">Доставка і оплата</a></li>
+              <li><a href="#" data-i18n="footer_warranty">Гарантія</a></li>
+              <li><a href="contacts.html" data-i18n="nav_contacts">Контакти</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-column">
+            <h4 class="footer-title" data-i18n="footer_contacts_title">Контакти</h4>
+            <ul class="footer-contacts">
+              <li>
+                <i class="fas fa-phone"></i>
+                <span>0 800 123 456</span>
+              </li>
+              <li>
+                <i class="fas fa-envelope"></i>
+                <span>info@techstore.ua</span>
+              </li>
+              <li>
+                <i class="fas fa-map-marker-alt"></i>
+                <span data-i18n="footer_address">м. Київ, вул. Хрещатик, 1</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="footer-bottom-content">
+          <p>&copy; 2025 TechStore. <span data-i18n="footer_rights">Всі права захищені</span>.</p>
+          <div class="footer-legal">
+            <a href="#" data-i18n="footer_privacy">Політика конфіденційності</a>
+            <a href="#" data-i18n="footer_terms">Умови використання</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Success Modal -->
+  <div class="modal" id="successModal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <div class="modal-icon success">
+        <i class="fas fa-check-circle"></i>
+      </div>
+      <h3 class="modal-title" data-i18n="modal_success_title">Дякуємо!</h3>
+      <p class="modal-text" data-i18n="modal_success_text">
+        Ваше повідомлення успішно надіслано. Ми зв'яжемося з вами найближчим часом.
+      </p>
+      <button class="btn btn-primary" id="closeModal" data-i18n="modal_close">
+        Закрити
+      </button>
+    </div>
+  </div>
+
+  <script src="../js/utils.js"></script>     <!-- 1. Спочатку Utils -->
+  <script src="../js/i18n.js"></script>      <!-- 2. Інтернаціоналізація -->
+  <script src="../js/theme.js"></script>     <!-- 3. Тема -->
+  <script src="../js/main.js"></script>      <!-- 4. Main (використовує Utils) -->
+  
+  <script>
+    // Contact Form Handler
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('successModal').classList.add('show');
+      this.reset();
+    });
+
+    // Close modal
+    document.getElementById('closeModal').addEventListener('click', function() {
+      document.getElementById('successModal').classList.remove('show');
+    });
+
+    document.querySelector('.modal-overlay').addEventListener('click', function() {
+      document.getElementById('successModal').classList.remove('show');
+    });
+  </script>
+</body>
+</html>
